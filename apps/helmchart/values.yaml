@@ -5,8 +5,17 @@ metadata:
   namespace: flux-blue
 spec:
   interval: 5m
+  releaseName: my-nginx
   chart:
     spec:
-      version: ">=1.0.0"
+      chart: nginx     
+      sourceRef:
+        kind: HelmRepository
+        name: my-chart-repo  
+        namespace: flux-blue
+  install:
+    remediation:
+      retries: 3
   values:
-    replicaCount: 3
+    replicaCount: 2
+
