@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: my-nginx-release
+  name: my-nginx-values
   namespace: flux-blue
 spec:
   interval: 5m
