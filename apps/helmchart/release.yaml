@@ -1,0 +1,21 @@
+# release.yaml
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: my-nginx-release
+  namespace: flux-blue
+spec:
+  releaseName: my-nginx
+  interval: 5m
+  chart:
+    spec:
+      chart: nginx
+      sourceRef:
+        kind: HelmRepository
+        name: my-chart-repo
+        namespace: default
+  install:
+    remediation:
+      retries: 3
+  values:
+    replicaCount: 1
